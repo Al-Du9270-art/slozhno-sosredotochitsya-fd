@@ -17,69 +17,6 @@
   }
 }
 /*Обшие стили*/
-
-.section-title {
-  color: var(--header-section-color);
-  font-size: var(--header-fs);
-  font-weight: 700;
-  line-height: 130%;
-}
-
-.post__title {
-  color: var(--header-post-color);
-  background-color: var(--accent-color);
-  font-weight: 700;
-  font-size: var(--header-fs);
-  line-height: 130%;
-  margin-block-end: 10px;
-}
-.post__title.post__title--weight-normal {
-  font-weight: 400;
-}
-
-.post__text {
-  color: var(--content-text-color);
-  font-weight: 400;
-  font-size: var(--main-fs);
-  line-height: 130%;
-}
-
-.post__link {
-  text-shadow: 3px 2px 0px var(--accent-color);
-  text-decoration: none;
-}
-
-.post__link:hover {
-  border-block-end: 1px solid currentColor;
-}
-
-.post__link:focus {
-  outline: none;
-}
-
-.post__link:focus-visible {
-  border: 1px solid currentColor;
-  padding-inline-end: 3px;
-}
-
-/*Header*/
-.header {
-  block-size: 100vh;
-  min-block-size: 668px;
-  margin-block-end: 31px;
-}
-@media (width >= 768px) {
-  .header {
-    min-block-size: 1024px;
-    margin-block-end: 40px;
-  }
-}
-@media (width >= 1024px) {
-  .header {
-    min-block-size: 758px;
-  }
-}
-
 .decorated-zone {
   position: relative;
 }
@@ -108,6 +45,86 @@
 @media (width >= 768px) {
   .decorated-zone::after {
     bottom: 40px;
+  }
+}
+.main-title {
+  font-size: clamp(7.25rem, 7.0115rem + 1.0178vw, 7.5rem);
+  font-weight: 700;
+  line-height: 84%;
+  text-shadow: 4px 4px 0px var(--accent-color);
+  color: var(--cover-color);
+}
+
+@media (width >=768px) {
+  .main-title {
+    font-size: clamp(7.5rem, 0.5625rem + 14.4531vw, 9.8125rem);
+  }
+}
+/*общие классы для стилизации заголовков в секции*/
+.section-title {
+  color: var(--header-section-color);
+  font-size: var(--header-fs);
+  font-weight: 700;
+  line-height: 130%;
+}
+/* изначально я делал переиспользуемые классы, скорее всего я неправильно дал им имена */
+.content-title {
+  color: var(--header-post-color);
+  background-color: var(--accent-color);
+  font-weight: 700;
+  font-size: var(--header-fs);
+  line-height: 130%;
+  /*я понимаю, что нельзя использовать в переиспользуемых стилях отступы, но этот отступ повторяется в каждом блоке, если прописывать его в блоках секциях он увеличит код и добавится еще один класс, лучше добавить дополнительный класс в каждой секции или оставить этот отступ в переиспользуемом классе?*/
+  margin-block-end: 10px;
+}
+.content-title.content-title--weight-normal {
+  font-weight: 400;
+}
+
+.body-text {
+  color: var(--content-text-color);
+  font-weight: 400;
+  font-size: var(--main-fs);
+  line-height: 130%;
+}
+
+.body-text:not(:last-child) {
+  margin-bottom: 10px;
+}
+
+.accent-link {
+  text-shadow: 3px 2px 0px var(--accent-color);
+  text-decoration: none;
+}
+
+.accent-link:hover {
+  border-block-end: 1px solid currentColor;
+}
+
+.accent-link:focus {
+  outline: none;
+}
+
+.accent-link:focus-visible {
+  outline: 1px solid currentColor;
+  outline-offset: 1px;
+}
+
+/*Header*/
+.header {
+  block-size: 100vh;
+  min-block-size: 668px;
+  margin-block-end: 31px;
+}
+@media (width >= 768px) {
+  .header {
+    min-block-size: 1024px;
+    margin-block-end: 40px;
+  }
+}
+@media (width >= 1024px) {
+  .header {
+    min-block-size: 768px;
   }
 }
 
@@ -163,11 +180,9 @@
 
 @media (width >= 1024px) {
   .header__theme-menu-list {
-    display: grid;
     grid-template-columns: repeat(3, min-content);
     grid-template-rows: 1fr;
     justify-content: center;
-    gap: 10px;
   }
 }
 
@@ -191,6 +206,7 @@
   min-height: 26px;
 }
 .header__theme-menu-button:hover {
+  cursor: pointer;
   border: 1px solid var(--nav-hover);
 }
 .header__theme-menu-button:focus {
@@ -207,17 +223,11 @@
 }
 
 .header__title {
-  font-size: clamp(7.25rem, 7.0115rem + 1.0178vw, 7.5rem);
-  font-weight: 700;
-  line-height: 84%;
-  text-shadow: 4px 4px 0px var(--accent-color);
-  color: var(--cover-color);
   margin-block-end: 52px;
 }
 
 @media (width >= 768px) {
   .header__title {
-    font-size: clamp(7.5rem, 0.5625rem + 14.4531vw, 9.8125rem);
     margin-inline-start: -20px;
     margin-block-end: 160px;
   }
@@ -276,7 +286,7 @@
     display: grid;
     gap: 50px;
     grid-template-columns: 206px 1fr;
-    margin-block-end: 58px;
+    margin-block-end: 59px;
   }
 }
 
@@ -284,7 +294,6 @@
   .posts-layout {
     gap: 20px;
     grid-template-columns: 315px 1fr;
-    margin-block-end: 60px;
   }
 }
 /*section post-cards*/
@@ -361,7 +370,6 @@
 .images__list {
   display: grid;
   gap: 10px;
-  overflow: hidden;
 }
 
 .image__item {
@@ -372,6 +380,10 @@
   object-position: center;
 }
 
+.footer.decorated-zone::after {
+  bottom: 0px;
+}
+
 @media (width >= 768px) {
   .images {
     margin-block-end: 79px;
@@ -380,13 +392,11 @@
     margin-block-end: 20px;
   }
   .images__list {
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(3, 1fr);
-    grid-auto-rows: 1fr;
-    grid-auto-columns: 1fr;
+    grid-template-columns: repeat(3, minmax(230px, 1fr));
+    grid-template-rows: 192px 230px 318px;
     gap: 20px;
-    max-block-size: 780px;
   }
+
   .image__sunset {
     grid-column: 1/3;
   }
@@ -407,31 +417,34 @@
 }
 
 @media (width >= 1024px) {
+  .images {
+    margin-block-end: 82px;
+  }
   .images__list {
-    max-block-size: 1050px;
+    grid-template-columns: repeat(3, minmax(315px, 1fr));
+    grid-template-rows: 260px 315px 433px;
   }
 }
+
 /*footer*/
 
 footer {
   block-size: 100vh;
+  min-block-size: 668px;
   display: flex;
 }
 
-@media (width >= 768px) {
-  .footer.decorated-zone::after {
-    bottom: 40px;
-  }
-}
-.footer__body {
-  flex-grow: 1;
-}
 .footer__heading {
+  flex-grow: 1;
   text-align: center;
   margin-block-start: 276px;
   margin-block-end: 283px;
 }
 @media (width >= 768px) {
+  footer {
+    min-block-size: 1024px;
+  }
+
   .footer__heading {
     margin-inline: 161px;
     margin-block-start: 444px;
@@ -439,6 +452,9 @@ footer {
   }
 }
 @media (width >= 1024px) {
+  footer {
+    min-block-size: 768px;
+  }
   .footer__heading {
     margin-block-start: 298px;
   }
