@@ -7,17 +7,8 @@
   background-attachment: fixed;
   background-size: cover;
   background-color: var(--color-background);
-  padding-inline: 10px;
-  padding-block: 10px;
 }
 
-@media (width >=768px) {
-
-  .page {
-    padding-inline: 20px;
-    padding-block: 20px;
-  }
-}
 /*Обшие стили*/
 
 .decorated-zone {
@@ -25,9 +16,9 @@
 }
 
 .decorated-zone::before {
-  content: '';
+  content: "";
   position: absolute;
-  left: calc(100% - 25px);
+  left: calc(100% - 35px);
   display: inline-block;
   width: 25px;
   height: 25px;
@@ -35,11 +26,17 @@
   border-block-start: 1px solid var(--nav-color);
 }
 
+@media (width >= 768px) {
+  .decorated-zone::before {
+    left: calc(100% - 45px);
+  }
+}
+
 .decorated-zone::after {
-  content: '';
+  content: "";
   position: absolute;
   display: inline-block;
-  bottom: 20px;
+  bottom: 10px;
   width: 25px;
   height: 25px;
   border-inline-start: 1px solid var(--nav-color);
@@ -47,9 +44,8 @@
 }
 
 @media (width >= 768px) {
-
   .decorated-zone::after {
-    bottom: 40px;
+    bottom: 20px;
   }
 }
 
@@ -62,28 +58,38 @@
 }
 
 @media (width >=768px) {
-
   .main-title {
     font-size: clamp(7.5rem, 0.5625rem + 14.4531vw, 9.8125rem);
   }
 }
 /*общие классы для стилизации заголовков в секции*/
+.section {
+  margin-block-end: 50px;
+}
+
+@media (width >=768px) {
+  .section {
+    margin-block-end: 80px;
+  }
+}
 
 .section-title {
   color: var(--header-section-color);
   font-size: var(--header-fs);
   font-weight: 700;
   line-height: 130%;
+  margin-block-end: 18.5px;
 }
-/* изначально я делал переиспользуемые классы, скорее всего я неправильно дал им имена */
 
+.content-block:not(:last-child) {
+  margin-block-end: 20px;
+}
 .content-title {
   color: var(--header-post-color);
   background-color: var(--accent-color);
   font-weight: 700;
   font-size: var(--header-fs);
   line-height: 130%;
-  /*я понимаю, что нельзя использовать в переиспользуемых стилях отступы, но этот отступ повторяется в каждом блоке, если прописывать его в блоках секциях он увеличит код и добавится еще один класс, лучше добавить дополнительный класс в каждой секции или оставить этот отступ в переиспользуемом классе?*/
   margin-block-end: 10px;
 }
 
@@ -99,7 +105,7 @@
 }
 
 .body-text:not(:last-child) {
-  margin-bottom: 10px;
+  margin-block-end: 10px;
 }
 
 .accent-link {
@@ -125,19 +131,21 @@
 .header {
   block-size: 100vh;
   min-block-size: 668px;
-  margin-block-end: 31px;
+  margin-block-end: 41px;
+  padding-inline: 10px;
+  padding-block: 10px;
 }
 
 @media (width >= 768px) {
-
   .header {
     min-block-size: 1024px;
-    margin-block-end: 40px;
+    margin-block-end: 60px;
+    padding-inline: 20px;
+    padding-block: 20px;
   }
 }
 
 @media (width >= 1024px) {
-
   .header {
     min-block-size: 768px;
   }
@@ -146,15 +154,21 @@
 .header__badge {
   display: var(--decoration-display);
   position: absolute;
-  left: calc(100% - 60px);
+  left: calc(100% - 70px);
   padding-block-start: 1px;
   font-size: var(--main-fs);
   line-height: 139%;
   color: var(--nav-color);
 }
 
+@media (width >= 768px) {
+  .header__badge {
+    left: calc(100% - 80px);
+  }
+}
+
 .header__badge::after {
-  content: '';
+  content: "";
   display: var(--decoration-display);
   position: absolute;
   left: 100%;
@@ -174,7 +188,6 @@
 }
 
 @media (width >= 768px) {
-
   .header__theme-menu {
     padding-block-start: 172px;
     margin-block-end: 174px;
@@ -182,7 +195,6 @@
 }
 
 @media (width >= 1024px) {
-
   .header__theme-menu {
     padding-block-start: 0;
     margin-block-end: 273px;
@@ -197,7 +209,6 @@
 }
 
 @media (width >= 1024px) {
-
   .header__theme-menu-list {
     grid-template-columns: repeat(3, min-content);
     grid-template-rows: 1fr;
@@ -248,7 +259,6 @@
 }
 
 @media (width >= 768px) {
-
   .header__title {
     margin-inline-start: -20px;
     margin-block-end: 160px;
@@ -256,7 +266,6 @@
 }
 
 @media (width >= 1024px) {
-
   .header__title {
     margin-block-end: 113px;
   }
@@ -274,7 +283,6 @@
 }
 
 @media (width >= 768px) {
-
   .header__body {
     display: grid;
   }
@@ -286,39 +294,34 @@
 }
 
 @media (width >= 1024px) {
-
   .header__description {
     max-width: 491px;
   }
 }
 
 /*main*/
-/*section posts-layout*/
 
-.posts-layout {
-  margin-block-end: 50px;
-}
-
-.posts-layout__title {
-  margin-block-end: 19px;
-}
-
-.posts-layout__post {
-  margin-block-end: 20px;
+main {
+  padding-inline: 10px;
 }
 
 @media (width >= 768px) {
+  main {
+    padding-inline: 20px;
+  }
+}
 
+/*section posts-layout*/
+
+@media (width >= 768px) {
   .posts-layout {
     display: grid;
     gap: 50px;
     grid-template-columns: 206px 1fr;
-    margin-block-end: 59px;
   }
 }
 
 @media (width >= 1024px) {
-
   .posts-layout {
     gap: 20px;
     grid-template-columns: 315px 1fr;
@@ -326,24 +329,7 @@
 }
 /*section post-cards*/
 
-.posts-cards {
-  margin-block-end: 50px;
-}
-
-.posts-cards__title {
-  padding-block-end: 20px;
-}
-
-.posts-cards__card {
-  margin-block-end: 20px;
-}
-
 @media (width >= 768px) {
-
-  .posts-cards {
-    margin-block-end: 80px;
-  }
-
   .posts-cards__title {
     line-height: 134%;
     max-inline-size: 136px;
@@ -351,14 +337,8 @@
 }
 
 @media (width >= 1024px) {
-
-  .posts-cards {
-    margin-block-end: 59px;
-  }
-
   .posts-cards__title {
     max-inline-size: 305px;
-    padding-block-end: 19px;
   }
 
   .posts-cards__body {
@@ -369,34 +349,15 @@
 }
 /*section advice*/
 
-.advice-layout {
-  margin-block-end: 48px;
-}
-
-.advice-layout__header {
-  margin-block-end: 19px;
-}
-
-.advice-layout__title {
-  margin-block-end: 20px;
-}
-
-.advice-layout__post {
-  margin-block-end: 20px;
-}
-
 @media (width >= 768px) {
-
   .advice-layout {
     display: grid;
     gap: 20px;
     grid-template-columns: 236px 1fr;
-    margin-block-end: 58px;
   }
 }
 
 @media (width >= 1024px) {
-
   .advice-layout {
     grid-template-columns: 315px 1fr;
   }
@@ -404,7 +365,7 @@
 /*section images*/
 
 .images {
-  margin-block-end: 52px;
+  margin-block-end: 42px;
 }
 
 .images__list {
@@ -420,16 +381,10 @@
   object-position: center;
 }
 
-.footer.decorated-zone::after {
-  bottom: 0;
-}
-
 @media (width >= 768px) {
-
   .images {
-    margin-block-end: 79px;
+    margin-block-end: 60px;
   }
-
   .images__title {
     margin-block-end: 20px;
   }
@@ -464,11 +419,6 @@
 }
 
 @media (width >= 1024px) {
-
-  .images {
-    margin-block-end: 82px;
-  }
-
   .images__list {
     grid-template-columns: repeat(3, minmax(315px, 1fr));
     grid-template-rows: 260px 315px 433px;
@@ -477,39 +427,31 @@
 
 /*footer*/
 
-footer {
+.footer {
   block-size: 100vh;
   min-block-size: 668px;
-  display: flex;
+  padding-inline: 10px;
+  padding-block: 10px;
 }
 
-.footer__heading {
-  flex-grow: 1;
-  text-align: center;
-  margin-block-start: 276px;
-  margin-block-end: 283px;
+.footer__content {
+  block-size: 100%;
+  inline-size: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 @media (width >= 768px) {
-
-  footer {
+  .footer {
     min-block-size: 1024px;
-  }
-
-  .footer__heading {
-    margin-inline: 161px;
-    margin-block-start: 444px;
-    margin-block-end: 471px;
+    padding-inline: 20px;
+    padding-block: 20px;
   }
 }
 
 @media (width >= 1024px) {
-
-  footer {
+  .footer {
     min-block-size: 768px;
-  }
-
-  .footer__heading {
-    margin-block-start: 298px;
   }
 }
